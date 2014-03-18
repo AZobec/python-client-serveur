@@ -50,9 +50,33 @@ while 1:
          print(">>> CODE 0: Ajout d'une ligne au dictionnaire")
          print(">>> CODE 1: Consultation d'une ligne du dictionnaire")
          print(">>> CODE 2: Modification d'une ligne du dictionnaire")
-         print(">>> Choisi")        
-         msgClient=input("")
-         print("")
+         print(">>> CODE Q: Quitter le programme")
+                
+         msgClient=input(">>> Choisissez votre action : ")
+
+         #Gestion du menu
+         #En cas de demande d'ajout :
+         if msgClient=="0":
+          print(">>> Tapez maintenant : nom;prénom;numéro")
+          msgClient=input("")
+          msgClient="0;"+msgClient
+
+         #En cas de demande de consultation 
+         if msgClient=="1":
+          print(">>> Tapez le nom de personne à rechercher")
+          msgClient=input("")
+          msgClient="1;"+msgClient
+
+         #En cas de demande de Modification
+         if msgClient=="2":
+          print(">>> Tapez maintenant: OldName;NewLastName;NewFirstName;NewNumber")
+          msgClient=input("")
+          msgClient="2;"+msgClient
+
+         #En cas de quitte
+         if msgClient=="Q" || msgClient=="q":
+          msgClient="FIN"
+          
          msgClient=msgClient.encode()
          print(">>> Envoi vers le serveur")
          sock.send(msgClient)         

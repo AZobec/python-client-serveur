@@ -70,7 +70,7 @@ print("S > Connexion client réussie, adresse IP %s, port %s \n" %(HOST,PORT))
 
 # dialogue avec le client, envoi de message
 connexion.send(b'hello client/ SERVEUR IS UP')
-print(">>> Vous êtes sur les serveur, prêt à recevoir vos instructions Dictionnaire")
+print(">>> Vous êtes sur le serveur, prêt à recevoir vos instructions Dictionnaire")
 print(">>> Tapez FIN ou rien si vous souhaitez interrompre la connexion") 
 
 # réception de message du client
@@ -84,9 +84,9 @@ while 1 :
     if testMessageClient=="FIN" :
         break
     listMessage=testMessageClient.split(";")
-    if int(listMessage[0]) == 0 :
+    if listMessage[0] == "0" :
         remplissage(listMessage[1], listMessage[2], listMessage[3], connexion)
-    if int(listMessage[0]) == 1 :
+    if listMessage[0] == "1" :
         consultation(listMessage[1], connexion)
 
 # fermeture de la connexion
