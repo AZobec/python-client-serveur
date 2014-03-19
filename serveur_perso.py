@@ -1,3 +1,5 @@
+#remote : python-client-serveur
+
 import socket
 
 
