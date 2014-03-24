@@ -60,6 +60,7 @@ while 1:
     if msgClient=="0":
         print(">>> Tapez maintenant : nom;prénom;numéro")
         msgClient=input("")
+        #on concatene le message au code pour que le serveur puisse l'interpréer
         msgClient="0;"+msgClient
 
     #En cas de demande de consultation 
