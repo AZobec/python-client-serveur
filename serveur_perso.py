@@ -24,7 +24,7 @@ def consultation(nom, connexion):
         if nom in Annuaire : # le prenom est-il répertorié ?
             item = Annuaire[nom] # consultation proprement dite
             prenom, num = item[0], item[1]
-            msgServer=">>> La personne se nommant %s est répertoriée \nPrenom:%s / Num: %s" %(nom,prenom,num)
+            msgServer=">>> La personne se nommant %s est répertoriée \nPrenom: %s / Num: %s" %(nom,prenom,num)
         else:
             msgServer=">>> *** nom inconnu ! ***"
               
@@ -33,15 +33,12 @@ def consultation(nom, connexion):
         print(">>> Envoi vers le client de la consultation")
         connexion.send(msgServer)             
  
-def modification(nom, _prenom, new_num, connexion):
+def modification(nom, prenom, new_num, connexion):
         if nom in Annuaire :# le prénom est-il répertorié?
-            item = Annuaire[nom]
-            prenom, num = item[0], item[1]
-            if item[0] == _prenom :
-                item[1] = new_num
-                msgServer=">>> Vous avez bien modifié le numéro de %s. Le nouveau numéro est : %s" %(nom,new_num)
-            else:
-                msgServer=">>> *** nom inconnu ! ***"
+            Annuaire[nom]=(prenom,new_num)
+            msgServer=">>> Vous avez bien modifié le numéro de %s. Le nouveau numéro est : %s" %(nom,new_num)
+        else:
+            msgServer=">>> *** nom inconnu ! ***"
             #On envoie le message
         msgServer=msgServer.encode()
         print(">>> Envoie vers le client le résultat de la modification")

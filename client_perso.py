@@ -47,7 +47,7 @@ while 1:
  
     if msgServer==b'FIN':
         break
-    print(">>> Tapez votre message au dictionnaire")
+    print(">>> Quelle action voulez-vous effectuer?")
     print(">>> CODE 0: Ajout d'une ligne au dictionnaire")
     print(">>> CODE 1: Consultation d'une ligne du dictionnaire")
     print(">>> CODE 2: Modification d'une ligne du dictionnaire")
@@ -75,7 +75,7 @@ while 1:
         msgClient="2;"+msgClient
 
     #En cas de quitte
-    if msgClient=="Q" || msgClient=="q":
+    if msgClient=="q":
         msgClient="FIN"
 
     msgClient=msgClient.encode()
