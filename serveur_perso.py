@@ -33,17 +33,19 @@ def consultation(nom, connexion):
         print(">>> Envoi vers le client de la consultation")
         connexion.send(msgServer)             
  
-def modification(nom, new_prenom, new_num, connexion):
-    while 1:
-        nom=input("Entrez le nom de la personne à modifier ou <enter> pour terminer :")
-        if nom=="":
-            break
-        if nom in Annuaire:
-            Num=input("Saisir le nouveau numéro :")
-            Annuaire[nom]=(Annuaire[nom][0],Num)
-        else :
-            print("!!! Nom inconnu !!!")
-
+def modification(nom, _prenom, new_num, connexion):
+        if nom in Annuaire :# le prénom est-il répertorié?
+            item = Annuaire[nom]
+            prenom, num = item[0], item[1]
+            if item[0] == _prenom :
+                item[1] = new_num
+                msgServer=">>> Vous avez bien modifié le numéro de %s. Le nouveau numéro est : %s" %(nom,new_num)
+            else:
+                msgServer=">>> *** nom inconnu ! ***"
+            #On envoie le message
+        msgServer=msgServer.encode()
+        print(">>> Envoie vers le client le résultat de la modification")
+        connexion.send(msgServer)
 
 
 
@@ -90,6 +92,8 @@ while 1 :
         remplissage(listMessage[1], listMessage[2], listMessage[3], connexion)
     if listMessage[0] == "1" :
         consultation(listMessage[1], connexion)
+    if listMessage[0] == "2" :
+        modification(listMessage[1], listMessage[2], listMessage[3], connexion)
 
 # fermeture de la connexion
 connexion.send(b"FIN")

@@ -70,7 +70,7 @@ while 1:
 
     #En cas de demande de Modification
     if msgClient=="2":
-        print(">>> Tapez maintenant: OldName;NewLastName;NewFirstName;NewNumber")
+        print(">>> Tapez maintenant: NomdelaPersonne;Prenom;NewNumber")
         msgClient=input("")
         msgClient="2;"+msgClient
 
@@ -86,6 +86,5 @@ while 1:
     print(msgServer.decode())
 
 #Fin while (1) connexion
-
 print (">>> Connexion interrompue par le serveur!!!")
 sock.close()
