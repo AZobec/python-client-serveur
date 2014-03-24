@@ -1,6 +1,6 @@
 -_-_-_-Projet python client serveur Annuaire-_-_-_-
 
-Arnaud ZOBEC
+Auteur: Arnaud ZOBEC
 
 UTILISATION:
 
